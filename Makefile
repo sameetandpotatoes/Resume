@@ -2,7 +2,7 @@
 PROJECT = Resume
 
 FLAGS  = -halt-on-error -output-directory obj/
-ENGINE = xelatex
+ENGINE = lualatex
 TEXINPUTS = .:obj/
 TEXMFOUTPUT = obj/
 
@@ -47,6 +47,6 @@ obj/$(PROJECT).aux: $(TEX_FILES) $(IMG_FILES) | obj/
 obj/$(PROJECT).bbl: $(BIB_FILES) | obj/$(PROJECT).aux
 	bibtex obj/$(PROJECT)
 	$(ENGINE) $(FLAGS) $(PROJECT)
-	
+
 obj/$(PROJECT).pdf: obj/$(PROJECT).aux $(if $(BIB_FILES), obj/$(PROJECT).bbl)
 	$(ENGINE) $(FLAGS) $(PROJECT)
