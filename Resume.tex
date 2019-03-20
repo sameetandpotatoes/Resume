@@ -1,4 +1,7 @@
-\documentclass[11.8pt,a4paper]{moderncv}
+\documentclass[11.9pt,a4paper]{moderncv}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage[scale=1, top=1cm, left=0.5cm, right=1cm]{geometry}
 
 \moderncvstyle{casual}
 \moderncvcolor{blue}
@@ -17,32 +20,39 @@
    \ifx&#7&%
      \else{\newline{}\begin{minipage}[t]{\linewidth}\small#7\end{minipage}}\fi}}
 
-\usepackage[utf8]{inputenc}
+ \renewcommand*{\cvdoubleitem}[5][.25em]{%
+  \cvitem[#1]{#2}{%
+    \begin{minipage}[t]{\doubleitemmaincolumnwidth+0.25\hintscolumnwidth}#3\end{minipage}%
+    \hspace*{\separatorcolumnwidth}%
+    \begin{minipage}[t]{0.5\hintscolumnwidth}\raggedleft\hintstyle{#4}\end{minipage}%
+    \hspace*{\separatorcolumnwidth}%
+    \begin{minipage}[t]{\doubleitemmaincolumnwidth+0.25\hintscolumnwidth}#5\end{minipage}}}
 
-\usepackage{fontspec}
-\usepackage[scale=1, top=1cm, left=0.7cm, right=0.7cm]{geometry}
+\newcommand{\namesection}[3]{ % Defines the command for the main heading
+\centering{ % Center the name
+  \fontsize{30pt}{50pt} % Font size
+  \fontspec[Path = fonts/lato/]{Lato-Hai}\selectfont #1 % First name font
+  \fontspec[Path = fonts/lato/]{Lato-Lig}\selectfont #2 % Last name font
+} \\[2pt] % Whitespace between the name and contact information
+\centering{ % Center the contact information
+  \fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{11pt}{14pt}\selectfont #3} % Contact information font
+}
 
 \setmainfont[Path = fonts/lato/,BoldItalicFont=OpenSans-Italic,BoldFont=OpenSans-Regular,ItalicFont=Lato-LigIta]{Lato-Lig}
-
-\setlength{\hintscolumnwidth}{2.5cm}
-
-\renewcommand*{\cvdoubleitem}[5][.25em]{%
- \cvitem[#1]{#2}{%
-   \begin{minipage}[t]{\doubleitemmaincolumnwidth+0.25\hintscolumnwidth}#3\end{minipage}%
-   \hspace*{\separatorcolumnwidth}%
-   \begin{minipage}[t]{0.5\hintscolumnwidth}\raggedleft\hintstyle{#4}\end{minipage}%
-   \hspace*{\separatorcolumnwidth}%
-   \begin{minipage}[t]{\doubleitemmaincolumnwidth+0.25\hintscolumnwidth}#5\end{minipage}}}
+\setlength{\hintscolumnwidth}{2.7cm}
 
 \begin{document}
 
 \namesection{Sameet}{Sapra}{
-\urlstyle{same} http://sameetsapra.com \\
-sameetandpotatoes@gmail.com}
+  \homepagesymbol{http://sameetsapra.com} \\
+    \emailsymbol{sameetandpotatoes@gmail.com}
+  | \githubsocialsymbol{\href{http://www.github.com/sameetandpotatoes}{sameetandpotatoes}}
+  | \linkedinsocialsymbol{\href{http://www.linkedin.com/in/sameet.sapra}{sameet.sapra}}
+}
 
 \section{Education}
 
-\cventry{Fall 2015 - May 2019}{University of Illinois at Urbana Champaign}{GPA: 3.95/4.0}{}{}{
+\cventry{Fall 2015 - \\ Spring 2019}{University of Illinois at Urbana Champaign}{GPA: 3.95/4.0}{}{}{
 \begin{itemize}
 \item M.C.S in Computer Science, B.S in Computer Science, Minor in Mathematical Statistics
 \item Coursework: Algorithms and Graph Theory, Distributed Systems, Computer Security, Networking, Systems Programming, Data Structures, Computer Architecture, Artificial Intelligence, Databases
@@ -73,7 +83,7 @@ sameetandpotatoes@gmail.com}
   \item Implement transactional recording of all program states on the platform using Apache Twill
 \end{itemize}}
 
-\entry[0.10em]{Fall 2015 - December 2016}{Full Stack Web Developer}{Cognitive Computation Group}{Champaign}{IL}{
+\entry[0.10em]{Fall 2015 - \\ Winter 2016}{Full Stack Web Developer}{Cognitive Computation Group}{Champaign}{IL}{
 \mybitem{\textit{Angular.js, PHP}}
 \begin{itemize}
 \item Refactor the research tools and demos on the website in PHP and Angular.js
@@ -110,24 +120,24 @@ sameetandpotatoes@gmail.com}
 
 \section{Projects and Activities}
 
-\cventry[0.10em]{September 2016 - Present}{Lead Project Groot Website Developer}{}{}{}{
-\begin{itemize}
-  \item Develop web application to manage access to student resumes and replace UIUC's core student infrastructure
-  \item Use a service-oriented architecture to encourage independent and reusable components
-\end{itemize}}
-
-\cventry[0.10em]{February 2016 - May 2017}{Co-Chair for Information Retrieval in Association for Computing Machinery}{}{}{}{
+\cventry[0.10em]{Feb. 2016 - \\ May 2017}{Co-Chair for Information Retrieval in Association for Computing Machinery}{}{}{}{
 \begin{itemize}
   \item Taught students how to parse, store, and visualize big data using Python and d3.js
   \item Managed projects such as analyzing presidential election outcomes with respect to different global issues
 \end{itemize}}
 
-%\cventry[0.10em]{February 2016}{UIUC HackIllinois - Open Source Division}{}{}{}{
+\cventry[0.10em]{Sept. 2016 - Mar. 2017}{Lead Project Groot Website Developer}{}{}{}{
+\begin{itemize}
+  \item Develop web application to manage access to student resumes and replace UIUC's core student infrastructure
+  \item Use a service-oriented architecture to encourage independent and reusable components
+\end{itemize}}
+
+%\cventry[0.10em]{Feb. 2016}{UIUC HackIllinois - Open Source Division}{}{}{}{
 %\begin{itemize}
 %  \item Built a backend Java application to assess a user's credibility and store user registration information to help in allocating computing resources for Apache Airavata, becoming a top 3 open source project at the hackathon
 %\end{itemize}}
 
-\cventry[0.10em]{January 2016}{Search Engine for Recipes}{}{}{}{
+\cventry[0.10em]{Jan. 2016}{Search Engine for Recipes}{}{}{}{
 \begin{itemize}
   \item Developed a web application to recursively crawl recipe websites and query results with Elasticsearch
   \item Served as a project manager and full stack web developer on the team
